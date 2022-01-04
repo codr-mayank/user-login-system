@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class RegistrationController {
 
-  private RegistrationService registrationService;
+  private final RegistrationService registrationService;
 
   @GetMapping(path = "ping")
   public String checkHealth() {
