@@ -32,24 +32,22 @@ public class AppUser implements UserDetails {
       generator = "user_sequence"
   )
   private Long id;
-  private String name;
+  private String firstName;
+  private String lastName;
   private String email;
-  private String username;
   private String password;
 
   @Enumerated(EnumType.STRING)
   private AppUserRole appUserRole;
-  private boolean locked;
-  private boolean enabled;
+  private boolean locked = false;
+  private boolean enabled = false;
 
-  public AppUser(String name, String email, String username, String password, AppUserRole appUserRole, boolean locked, boolean enabled) {
-    this.name = name;
+  public AppUser(String firstName, String lastName, String email, String password, AppUserRole appUserRole) {
+    this.firstName = firstName;
+    this.lastName = lastName;
     this.email = email;
-    this.username = username;
     this.password = password;
     this.appUserRole = appUserRole;
-    this.locked = locked;
-    this.enabled = enabled;
   }
 
   @Override
@@ -64,8 +62,14 @@ public class AppUser implements UserDetails {
   }
 
   @Override
-  public String getUsername() {
-    return username;
+  public String getUsername() { return email; }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
   }
 
   @Override
