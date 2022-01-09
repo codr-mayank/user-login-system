@@ -34,6 +34,7 @@ public class AppUserService implements UserDetailsService {
     boolean userExists = appUserRepository.findByEmail(appUser.getEmail()).isPresent();
 
     if(userExists) {
+//      TODO: if email id not confirmed send email with link
       throw new IllegalStateException("email already taken");
     }
 
